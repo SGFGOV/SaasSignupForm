@@ -2,6 +2,6 @@ version: "3.1"
 services:
   saasform-db:
     ports:
-      - "3306:3306"
+      - "5432"
     volumes:
-      - ./src/e2e-test/data/db:/var/lib/mysql:cached
+      - ./src/e2e-test/data/db:/var/lib/postgres:cached

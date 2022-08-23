@@ -1,31 +1,30 @@
 version: "3.1"
 services:
   saasform-db:
-    image: mariadb:10.5
+    image: postgres
     restart: always
     ports:
-      - 3306
+      - 5432
     environment:
-      - MYSQL_DATABASE=saasform
-      - MYSQL_USER=saasform
-      - MYSQL_PASSWORD=saasformp
-      - MYSQL_ROOT_PASSWORD=rootpassword
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
     volumes:
-      - ./data/db:/var/lib/mysql:cached
+      - ./data/db:/var/lib/postgres:cached
 
   saasform:
     image: saasform/saasform:latest
+    build: ./src/webapp
     restart: always
     depends_on:
       - saasform-db
     environment:
       - NODE_ENV=development
-      - TYPEORM_CONNECTION=mysql
-      - TYPEORM_HOST=saasform-db
-      - TYPEORM_USERNAME=saasform
-      - TYPEORM_PASSWORD=saasformp
-      - TYPEORM_DATABASE=saasform
-      - TYPEORM_PORT=3306
+      - TYPEORM_CONNECTION=postgres
+      - TYPEORM_HOST=localhost
+      - TYPEORM_USERNAME=postgres
+      - TYPEORM_PASSWORD=postgres
+      - TYPEORM_DATABASE=postgres
+      - TYPEORM_PORT=5432
       - TYPEORM_SYNCHRONIZE=true
       - TYPEORM_LOGGING=true
       - TYPEORM_MIGRATIONS=/app/dist/migration/**/*.js
@@ -45,8 +44,8 @@ services:
     depends_on:
       - saasform
     environment:
-      SAASFORM_SERVER: http://saasform:7000
-      SAASFORM_USER_LOGIN: http://localhost:7000/login
+      SAASFORM_SERVER: http://172.31.35.177:7000
+      SAASFORM_USER_LOGIN: http://172.31.35.177:7000/login
     ports:
       - "3000:3000"
     command: ["wait-for-it",  "saasform:7000", "--", "npm", "start"]

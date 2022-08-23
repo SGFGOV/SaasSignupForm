@@ -4,10 +4,10 @@ SAASFORM_THEME: default
 
 # database
 TYPEORM_HOST: localhost
-TYPEORM_PORT: 3306
-TYPEORM_DATABASE: saasform
-TYPEORM_USERNAME: saasform
-TYPEORM_PASSWORD: saasformp
+TYPEORM_PORT: 5432
+TYPEORM_DATABASE: postgres
+TYPEORM_USERNAME: postgres
+TYPEORM_PASSWORD: postgres
 
 
 ###################
