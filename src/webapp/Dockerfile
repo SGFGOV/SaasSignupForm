@@ -6,16 +6,18 @@ COPY . .
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        git ca-certificates
-
-RUN npm i -g @nestjs/cli@7.5.6 \
-    && yarn add --dev \
-        babel-loader@8.2.2 \
-        @babel/core@7.13.10 \
-        @babel/preset-env@7.13.10 \
-        webpack@4.46.0 \
-    && yarn install --prod \
-    && yarn build
+        git ca-certificates \
+        && apt-get -yqq install ssh
+RUN mkdir /root/.ssh \
+    && chmod 0700 /root/.ssh \
+    && ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts
+RUN npm install -g @nestjs/cli 
+RUN yarn add --dev \
+        babel-loader \
+        @babel/core \
+        @babel/preset-env \
+        webpack 
+RUN yarn && yarn build
 
 
 FROM ${ARCH}node:14.16.0-buster-slim

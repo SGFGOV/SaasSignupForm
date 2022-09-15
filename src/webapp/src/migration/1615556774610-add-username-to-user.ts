@@ -5,7 +5,6 @@ export class addUsernameToUser1615556774610 implements MigrationInterface {
     await queryRunner.query(`
         ALTER TABLE users
         ADD username VARCHAR(255) UNIQUE
-        AFTER email
     `)
   }
 

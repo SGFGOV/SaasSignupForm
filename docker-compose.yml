@@ -10,9 +10,9 @@ services:
       - POSTGRES_USER=postgres
     volumes:
       - ./data/db:/var/lib/postgres:cached
-
+    
   saasform:
-    image: saasform/saasform:latest
+    #image: saasform/saasform:latest
     build: ./src/webapp
     restart: always
     depends_on:
@@ -20,7 +20,7 @@ services:
     environment:
       - NODE_ENV=development
       - TYPEORM_CONNECTION=postgres
-      - TYPEORM_HOST=localhost
+      - TYPEORM_HOST=saasform-db
       - TYPEORM_USERNAME=postgres
       - TYPEORM_PASSWORD=postgres
       - TYPEORM_DATABASE=postgres
@@ -37,9 +37,10 @@ services:
       - ./data/pages:/app/pages
       - ./data/themes:/app/themes
     command: ["bash", "/app/bin/startup.sh"]
-
+    
   demo-express:
-    image: saasform/demo-express:latest
+   # image: saasform/demo-express:latest
+    build: ./src/demo-express
     restart: always
     depends_on:
       - saasform
@@ -49,3 +50,4 @@ services:
     ports:
       - "3000:3000"
     command: ["wait-for-it",  "saasform:7000", "--", "npm", "start"]
+    

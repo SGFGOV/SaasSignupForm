@@ -41,6 +41,7 @@
     "@types/passport-http-bearer": "^1.0.37",
     "add": "^2.0.6",
     "apollo-server-express": "^2.19.2",
+    "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
     "class-transformer": "^0.3.2",
     "class-validator": "^0.13.1",
@@ -60,13 +61,14 @@
     "mysql": "^2.18.1",
     "parse-domain": "^3.0.3",
     "passport": "^0.4.1",
-    "passport-azure-ad": "0x0ece/passport-azure-ad",
+    "passport-azure-ad": "^4.3.4",
     "passport-http-bearer": "^1.0.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "passport-oauth2-oidc": "^0.0.2",
     "passport-saml": "^2.2.0",
     "passport-totp": "^0.0.2",
+    "pg": "^8.8.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.3",
@@ -105,7 +107,7 @@
     "ts-node": "^9.0.0",
     "ts-standard": "^10.0.0",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "^4.0.5"
+    "typescript": "4.7.4"
   },
   "jest": {
     "moduleFileExtensions": [

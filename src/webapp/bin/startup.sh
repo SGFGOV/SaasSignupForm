@@ -2,7 +2,7 @@
 
 echo "START"
 
-until node node_modules/typeorm/cli.js query "SELECT 1" &> /dev/null; do
+until node node_modules/typeorm/cli.js query "SELECT 1" ; do
 echo 'Waiting Maria ...';
 sleep 5
 done

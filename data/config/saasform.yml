@@ -3,7 +3,7 @@ SAASFORM_BASE_URL: http://localhost:7000
 SAASFORM_THEME: default
 
 # database
-TYPEORM_HOST: localhost
+TYPEORM_HOST: saasform-db
 TYPEORM_PORT: 5432
 TYPEORM_DATABASE: postgres
 TYPEORM_USERNAME: postgres

@@ -8,12 +8,12 @@ export class updatePlansStructure1627552793068 implements MigrationInterface {
 
     await queryRunner.query(`
         CREATE TABLE IF NOT EXISTS plans (
-            id int(11) NOT NULL AUTO_INCREMENT,
-            created datetime(6) NOT NULL DEFAULT current_timestamp(6),
-            updated datetime(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
-            data longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(data)),
+            id bigserial NOT NULL,
+            created timestamp NOT NULL DEFAULT current_timestamp(6),
+            updated timestamp NOT NULL DEFAULT current_timestamp(6),
+            data json NOT NULL,
             PRIMARY KEY (id)
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+        ) 
         `)
   }
 

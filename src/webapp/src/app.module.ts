@@ -31,7 +31,7 @@ const configWebsite = (): any => yaml.load(
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
-        type: 'mysql',
+        type: 'postgres',
         host: configService.get('TYPEORM_HOST'),
         port: configService.get('TYPEORM_PORT'),
         username: configService.get('TYPEORM_USERNAME'),
