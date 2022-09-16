@@ -4,12 +4,13 @@ services:
     image: postgres
     restart: always
     ports:
-      - 5432
+      - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
     volumes:
       - ./data/db:/var/lib/postgres:cached
+    
     
   saasform:
     #image: saasform/saasform:latest
@@ -45,8 +46,8 @@ services:
     depends_on:
       - saasform
     environment:
-      SAASFORM_SERVER: http://172.31.35.177:7000
-      SAASFORM_USER_LOGIN: http://172.31.35.177:7000/login
+      SAASFORM_SERVER: http://172.31.34.235:7000
+      SAASFORM_USER_LOGIN: http://172.31.34.235:7000/login
     ports:
       - "3000:3000"
     command: ["wait-for-it",  "saasform:7000", "--", "npm", "start"]

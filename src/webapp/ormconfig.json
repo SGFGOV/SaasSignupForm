@@ -1,7 +1,7 @@
 [{
    "name": "default",
    "type": "postgres",
-   "host": "localhost",
+   "host": "172.31.34.235",
    "port": 5432,
    "username": "postgres",
    "password": "postgres",
@@ -20,7 +20,7 @@
 {
    "name": "test",
    "type": "postgres",
-   "host": "localhost",
+   "host": "saasform-db",
    "port": 5432,
    "username": "postgres",
    "password": "postgres",

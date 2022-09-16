@@ -27,7 +27,7 @@ export class ApiV1TeamController {
 
     const sanitizedUsers = users.map(u => {
       if (u != null) {
-        const { id, email, data, created, isActive, username } = u
+        const { id, email, data, created, isActive: isActive, username } = u
         return { id, email, profile: data.profile, emailConfirmed: data.emailConfirmed, created, isActive, username }
       }
     })

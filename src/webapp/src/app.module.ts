@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { ScheduleModule } from '@nestjs/schedule'
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
+
 
 import { readFileSync } from 'fs'
 import * as yaml from 'js-yaml'
@@ -37,6 +39,7 @@ const configWebsite = (): any => yaml.load(
         username: configService.get('TYPEORM_USERNAME'),
         password: configService.get('TYPEORM_PASSWORD'),
         database: configService.get('TYPEORM_DATABASE'),
+        namingStrategy: new SnakeNamingStrategy(),
         autoLoadEntities: true,
         // synchronize: true,
         extra: {
